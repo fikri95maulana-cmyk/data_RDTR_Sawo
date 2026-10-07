@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebGIS RDTR Kecamatan Sawoo</title>
+<meta name="description" content="WebGIS data spasial RDTR Kecamatan Sawoo, Kabupaten Ponorogo, Jawa Timur.">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="topbar">
+  <button id="menuBtn" class="icon-btn" aria-label="Buka/tutup panel layer" title="Panel layer">
+    <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <div class="brand">
+    <div class="logo"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg></div>
+    <div>
+      <h1>WebGIS RDTR Kecamatan Sawoo</h1>
+      <p>Kabupaten Ponorogo · Provinsi Jawa Timur</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <span id="activeCount" class="pill">0 layer aktif</span>
+    <button id="legendBtn" class="btn" title="Tampilkan legenda">Legenda</button>
+    <button id="aboutBtn" class="btn ghost" title="Tentang">Info</button>
+  </div>
+</header>
+
+<aside id="sidebar">
+  <div class="side-head">
+    <div class="search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search" type="search" placeholder="Cari layer…" autocomplete="off">
+    </div>
+    <div class="side-tools">
+      <button id="expandAll" class="link">Buka semua grup</button>
+      <button id="collapseAll" class="link">Tutup semua</button>
+      <button id="clearAll" class="link danger">Matikan layer</button>
+    </div>
+  </div>
+  <div id="tree" class="tree" aria-live="polite"></div>
+  <div class="side-foot">
+    <span id="totalInfo"></span>
+  </div>
+</aside>
+
+<main id="map"></main>
+
+<div id="basemaps" class="basemaps">
+  <button data-bm="sat" class="active"><i style="background-image:linear-gradient(135deg,#2c4a2b,#6b5a3a)"></i>Satelit</button>
+  <button data-bm="hybrid"><i style="background-image:linear-gradient(135deg,#2c4a2b,#6b5a3a)"></i>Hibrida</button>
+  <button data-bm="road"><i style="background-image:linear-gradient(135deg,#e8eaed,#fbbc04)"></i>Jalan</button>
+  <button data-bm="terrain"><i style="background-image:linear-gradient(135deg,#c5e1a5,#a1887f)"></i>Medan</button>
+  <button data-bm="osm"><i style="background-image:linear-gradient(135deg,#d9ead3,#f4cccc)"></i>OSM</button>
+  <button data-bm="dark"><i style="background-image:linear-gradient(135deg,#1e2430,#3a4150)"></i>Gelap</button>
+</div>
+
+<section id="legendPanel" class="panel hidden">
+  <div class="panel-head">
+    <strong>Legenda</strong>
+    <button class="icon-btn small" data-close="legendPanel" aria-label="Tutup"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div id="legendBody" class="panel-body"></div>
+</section>
+
+<div id="statusbar">
+  <span id="coords">Lat/Lon: –</span>
+  <span id="zoomInfo">Zoom: –</span>
+  <span id="loading" class="hidden"><i class="spin"></i>Memuat layer…</span>
+</div>
+
+<div id="aboutModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+  <div class="modal-card">
+    <button class="icon-btn small close" data-close="aboutModal" aria-label="Tutup"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <h2 id="aboutTitle">Tentang WebGIS</h2>
+    <p>WebGIS ini menampilkan seluruh data spasial analisis dasar wilayah untuk penyusunan
+    <b>Rencana Detail Tata Ruang (RDTR) Kecamatan Sawoo, Kabupaten Ponorogo</b>. Data bersumber dari
+    berkas shapefile/raster yang tersimpan pada repositori ini dan telah diproyeksikan ke WGS 84 (EPSG:4326).</p>
+    <ul>
+      <li>Aktifkan layer pada panel kiri; klik objek di peta untuk melihat atributnya.</li>
+      <li>Gunakan tombol <b>Aa</b> pada layer tertentu untuk menampilkan label objek.</li>
+      <li>Geser penggeser opasitas pada setiap layer aktif untuk mengatur transparansi.</li>
+      <li>Basemap Google Satelit/Hibrida/Jalan/Medan tersedia pada pemilih basemap di kanan bawah.</li>
+    </ul>
+    <p class="muted">Basemap © Google, OpenStreetMap contributors, CARTO. Geometri disederhanakan untuk keperluan
+    penayangan web; gunakan berkas asli (ZIP) untuk analisis presisi.</p>
+  </div>
+</div>
+
+<script src="vendor/leaflet/leaflet.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
